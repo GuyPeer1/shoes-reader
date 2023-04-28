@@ -3,7 +3,6 @@ import { OneShoeStats } from '../cmps/one-shoe-stats.jsx'
 import { OneShoeDetails } from '../cmps/one-shoe-details.jsx'
 import { OneShoeSuits } from '../cmps/one-shoe-suits.jsx'
 import { dataService } from '../services/data.service.js'
-import { shoeService } from '../services/shoe.service.js'
 import { socketService } from '../services/socket.service'
 import { HomePage } from "./home-page.jsx"
 
