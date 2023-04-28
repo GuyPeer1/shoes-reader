@@ -7,8 +7,9 @@ import video from '../assets/video.mp4'
 
 export function HomePage() {
     //The app first render will be with the next RFID:
+    //7630040511865
     const [data, setData] = useState()
-    const [rfid, setRfid] = useState('')
+    const [rfid, setRfid] = useState(7630040511865)
     const [shoe, setShoe] = useState(null)
 
     useEffect(() => {
@@ -26,7 +27,7 @@ export function HomePage() {
     useEffect(() => {
         if (rfid) {
             const shoe = dataService.getShoe(data, rfid)
-            if (shoe !== shoe) setShoe(prevShoe => ({ ...prevShoe, ...shoe }) || null)
+            setShoe(prevShoe => ({ ...prevShoe, ...shoe }) || null)
         }
     }, [rfid])
 
@@ -39,8 +40,8 @@ export function HomePage() {
             clearTimeout(rfidTimer)
         }
 
-        function handleRFIDChange(value, rfidType) {
-            if (value.length === 24 && rfidType === 'first') {
+        function handleRFIDChange(value) {
+            if (value.length === 24) {
                 setRfid(value)
                 clearTimeout(rfidTimer)
                 rfidTimer = setTimeout(resetRfid, 3000) // Reset after 3 seconds of no events
@@ -48,7 +49,7 @@ export function HomePage() {
         }
 
         socketService.on('rfid', (rfidTag) => {
-            handleRFIDChange(rfidTag, 'first')
+            handleRFIDChange(rfidTag)
         })
 
         return () => {
@@ -62,9 +63,8 @@ export function HomePage() {
             <video autoPlay loop muted>
                 <source src={video} type="video/mp4" />
             </video>
-            <ShoeInfo/>
+            {shoe && <ShoeInfo/>}
         </section>
-
     )
 
 }

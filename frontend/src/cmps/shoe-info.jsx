@@ -1,22 +1,10 @@
-import logoPhoto from '../assets/img/logo.png'
-import orangePhoto from '../assets/img/orange.png'
-import runnerPhoto from '../assets/img/runner.png'
 
-export function ShoeInfo({shoe}) {
+export function ShoeInfo({ shoe }) {
     // const shoeInfo = shoe.info
-    // return (
-    //     <section className="one-shoe-suits">
-    //         <img className="logo-img" src={logoPhoto} alt="logo" />
-    //         <img className="orange-img" src={orangePhoto} alt="orange"/>
-    //         <span className="info-he">:מתאים ל</span>
+    return (
+        <section className="shoe-info">
+            hellow from shoe info
+        </section >
+    )
 
-    //         <span className="main-txt">{shoeInfo[1][4]}</span>
-    //         <span className="main-txt">{shoeInfo[1][5]}</span>
-    //         <img className="orange-img" src={orangePhoto} alt="orange" />
-
-    //         <span className="video-txt">Video clip</span>
-    //         <img className="runner-img" src={runnerPhoto} alt='runner' />
-    //     </section >
-    // )
-    return 'helllo'
 }
