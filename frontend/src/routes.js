@@ -1,10 +1,10 @@
-import { OneShoePage } from './pages/one-shoe-page.jsx'
+import { HomePage } from './pages/home-page.jsx'
 
 const routes = [
     {
         path: '/',
-        component: <OneShoePage />,
-        label: 'One-shoe',
+        component: <HomePage />,
+        label: 'home-page',
     }
 ]
 
