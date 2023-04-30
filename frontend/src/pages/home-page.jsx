@@ -44,7 +44,7 @@ export function HomePage() {
             if (value.length === 24) {
                 setRfid(value)
                 clearTimeout(rfidTimer)
-                rfidTimer = setTimeout(resetRfid, 300000) // Reset after 3 seconds of no events
+                rfidTimer = setTimeout(resetRfid, 3000000) // Reset after 3 seconds of no events
             }
         }
 
