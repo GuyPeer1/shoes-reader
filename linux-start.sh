@@ -14,7 +14,7 @@ echo "Backend server started."
 sleep 10
 
 # Change to frontend directory
-cd /frontend
+cd ../frontend
 echo "Current working directory: $(pwd)"
 
 # Start frontend server
