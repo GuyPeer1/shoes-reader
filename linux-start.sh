@@ -1,5 +1,16 @@
 #!/bin/bash
 
-gnome-terminal --tab --title="backend" --working-directory="/path/to/backend" -e "npm start"
+# Change to backend directory
+cd /backend
 
-gnome-terminal --tab --title="frontend" --working-directory="/path/to/frontend" -e "npm start"
+# Start backend server
+npm start &
+
+# Wait for backend server to start
+sleep 10
+
+# Change to frontend directory
+cd /frontend
+
+# Start frontend server
+npm start
