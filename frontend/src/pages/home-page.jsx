@@ -6,11 +6,12 @@ import { socketService } from '../services/socket.service'
 import video from '../assets/video.mp4'
 
 export function HomePage() {
-    //The app first render will be with the next RFID:
+    //RFID sample:
     //7630040511865
     const [data, setData] = useState()
-    const [rfid, setRfid] = useState(7630040511865)
+    const [rfid, setRfid] = useState('')
     const [shoe, setShoe] = useState(null)
+    const MemoizedShoeInfo = React.memo(ShoeInfo)
 
     useEffect(() => {
         async function fetchData() {
@@ -27,6 +28,9 @@ export function HomePage() {
     useEffect(() => {
         if (rfid) {
             const shoe = dataService.getShoe(data, rfid)
+            if (!shoe[1]){
+                shoe[1] = [,':( Shoe is not available']
+            }
             setShoe(prevShoe => ({ ...prevShoe, ...shoe }) || null)
         }
     }, [rfid])
@@ -63,7 +67,7 @@ export function HomePage() {
             <video autoPlay loop muted>
                 <source src={video} type="video/mp4" />
             </video>
-            {shoe !== null && <ShoeInfo shoe={shoe} />}
+            {shoe !== null && <MemoizedShoeInfo shoe={shoe} />}
         </section>
     )
 
