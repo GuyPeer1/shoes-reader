@@ -28,6 +28,7 @@ export function HomePage() {
     useEffect(() => {
         if (rfid) {
             const shoe = dataService.getShoe(data, rfid)
+            console.log(shoe)
             if (!shoe[1]){
                 shoe[1] = [,':( Shoe is not available']
             }
@@ -48,7 +49,7 @@ export function HomePage() {
             if (value.length === 24) {
                 setRfid(value)
                 clearTimeout(rfidTimer)
-                rfidTimer = setTimeout(resetRfid, 3000000) // Reset after 3 seconds of no events
+                rfidTimer = setTimeout(resetRfid, 2000) // Reset after 3 seconds of no events
             }
         }
 
