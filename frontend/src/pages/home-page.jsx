@@ -5,18 +5,17 @@ import { dataService } from '../services/data.service.js'
 import { socketService } from '../services/socket.service'
 import video from '../assets/video.mp4'
 
-export function HomePage() {
+export default function HomePage() {
     //RFID sample:
     //7630040511865
     const [data, setData] = useState()
     const [rfid, setRfid] = useState('')
     const [shoe, setShoe] = useState(null)
-    const MemoizedShoeInfo = React.memo(ShoeInfo)
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const data = await dataService.loadData()
+                const data = await dataService.query()
                 setData(data)
             } catch (error) {
                 console.error("Error occurred while fetching data:", error)
@@ -28,10 +27,6 @@ export function HomePage() {
     useEffect(() => {
         if (rfid) {
             const shoe = dataService.getShoe(data, rfid)
-            console.log(shoe)
-            if (!shoe[1]){
-                shoe[1] = [,':( Shoe is not available']
-            }
             setShoe(prevShoe => ({ ...prevShoe, ...shoe }) || null)
         }
     }, [rfid])
@@ -49,7 +44,7 @@ export function HomePage() {
             if (value.length === 24) {
                 setRfid(value)
                 clearTimeout(rfidTimer)
-                rfidTimer = setTimeout(resetRfid, 2000) // Reset after 3 seconds of no events
+                rfidTimer = setTimeout(resetRfid, 2000) // Reset after 2 seconds of no events
             }
         }
 
@@ -68,7 +63,7 @@ export function HomePage() {
             <video autoPlay loop muted>
                 <source src={video} type="video/mp4" />
             </video>
-            {shoe !== null && <MemoizedShoeInfo shoe={shoe} />}
+            {shoe !== null && <ShoeInfo shoe={shoe} />}
         </section>
     )
 

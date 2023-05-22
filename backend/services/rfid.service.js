@@ -11,10 +11,11 @@ async function getPortPath(manufacturerName) {
     const ports = await SerialPort.list()
     const filteredPorts = ports.filter(port => port.manufacturer === manufacturerName)
     if (filteredPorts.length === 0) {
-        throw new Error('RFID device is not attached')
+        throw new Error(`No ports found with manufacturer name ${manufacturerName}`)
     }
     const PORT_PATH = filteredPorts[0].path
     readRfid(PORT_PATH, 'rfid')
+
 }
 
 function readRfid(path, eventType) {
@@ -29,6 +30,7 @@ function readRfid(path, eventType) {
 
         if (buffer.length >= 16) {
             const tag_id = buffer.slice(3, 15).toString('hex')
+            console.log(tag_id)
             buffer = Buffer.alloc(0)
             console.log(eventType, tag_id)
 

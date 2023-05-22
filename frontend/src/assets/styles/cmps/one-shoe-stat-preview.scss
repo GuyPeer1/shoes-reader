@@ -1,0 +1,55 @@
+.stat-preview {
+    .stat-type {
+        text-align: center;
+        padding: em(6px);
+
+        @media (min-width:1600px) {
+            padding: em(8px);
+        }
+    }
+
+    .bars-container {
+        display: flex;
+        justify-content: space-between;
+        font-size: em(12px);
+        text-align: center;
+
+        .bars {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            
+            .value-0 {
+                font-family: opensans-Light;    
+            }
+            .value-1 {
+                font-family: opensans-Regular;    
+            }
+            .value-2 {
+                font-family: opensans-Bold;
+            }
+
+            .bar {
+                width: 50px;
+                margin: em(8px);
+
+                @media (min-width:1600px) {
+                    width: 100px;
+                }
+
+                height: 10px;
+                border: 1px solid #EAEAEA;
+                border-radius: 16px;
+
+                &.value-2 {
+                    background-color: #F5A623;
+                }
+
+                &.value-1 {
+                    background-color: rgba(245, 166, 35, 0.5);
+                }
+            }
+        }
+    }
+
+}

@@ -1,24 +1,18 @@
 #!/bin/bash
 
-echo "Starting servers..."
-
-# Change to backend directory
-cd backend
-echo "Current working directory: $(pwd)"
-
-# Start backend server
+cd /home/guy/Desktop/one-shoe
 npm start &
-echo "Backend server started."
+echo "App started."
 
 # Wait for backend server to start
 sleep 10
 
-# Change to frontend directory
-cd ../frontend
-echo "Current working directory: $(pwd)"
+# Open frontend in Chromium in full-screen mode
+chromium-browser --kiosk http://localhost:3000 &
+echo "Frontend opened in Chromium in full-screen mode."
 
-# Start frontend server
-npm start
-echo "Frontend server started."
+# Hide mouse cursor using unclutter
+unclutter -idle 0.01 -root &
 
-echo "Servers started."
+# Keep terminal open until user presses a key
+read -p "Press any key to exit..."

@@ -5,14 +5,18 @@ import purposeImg from '../assets/img/purpose.png'
 
 
 export function ShoeInfo({ shoe }) {
+
+    const shoeInfo = shoe.info
+
     if (Object.keys(shoe).length === 0) {
         return 'no shoe'
     }
-    const type = shoe[1][1]
-    const weight = shoe[1][2]
-    const secUse = shoe[1][3]
-    const drop = shoe[1][4]
-    const purpose = shoe[1][5]
+    
+    const type = shoeInfo[1][1]
+    const weight = shoeInfo[1][2]
+    const secUse = shoeInfo[1][3]
+    const drop = shoeInfo[1][4]
+    const purpose = shoeInfo[1][5]
 
     return (
         <section className="shoe-info">

@@ -1,0 +1,29 @@
+.two-shoes-page {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+
+    .img-container {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .first-shoe-img {
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .first-shoe {
+        grid-area: 1 / 2 / 2 / 3;
+    }
+
+    .second-shoe {
+        grid-area: 1 / 3 / 2 / 4;
+    }
+
+    .second-shoe-img {
+        grid-area: 1 / 4 / 2 / 5;
+    }
+}

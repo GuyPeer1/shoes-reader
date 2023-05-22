@@ -1,0 +1,18 @@
+.main-layout {
+    font-size: em(19px);
+    text-align: right;
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+
+    @media (min-width: 1600px) {
+        font-size: em(24px);
+    }
+
+    .one-shoe-page {
+        display: grid;
+        grid-template-columns: 30vw 40vw 30vw;
+        justify-content: center;
+        align-items: center;
+        grid-template-rows: 100vh;
+    }
+}
